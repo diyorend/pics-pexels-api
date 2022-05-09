@@ -1,0 +1,146 @@
+// imports
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap");
+
+// mixins
+@mixin flex($j, $a, $d) {
+  display: flex;
+  flex-direction: $d;
+  justify-content: $j;
+  align-items: $a;
+}
+
+// Vars
+$text: 2rem;
+$logo: 3rem;
+$icon: 4rem;
+$bg-color: rgb(51, 112, 224);
+$bg-hover-color: rgb(40, 86, 171);
+
+//Global
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  transition: all 0.5s ease;
+}
+body {
+  font-family: "Roboto", "Lato", sans-serif;
+}
+button,
+input,
+a,
+li,
+p {
+  font-size: $text;
+  font-weight: normal;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+button,
+.more {
+  cursor: pointer;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  background: $bg-color;
+  color: whitesmoke;
+}
+i,
+svg {
+  pointer-events: none;
+}
+// Header
+
+header {
+  min-height: 20vh;
+  padding: 2rem;
+  @include flex(center, center, column);
+
+  h2 {
+    padding: 1rem;
+    a {
+      font-size: $logo;
+      font-family: "Lato";
+    }
+  }
+  form {
+    @include flex(center, center, row);
+    width: 100%;
+    input {
+      border: 2px solid $bg-color;
+      border-radius: 1rem;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      outline: none;
+      padding: 1rem;
+      width: 40%;
+      font-family: "Lato";
+    }
+    button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border: 2px solid $bg-color;
+    }
+  }
+}
+
+// main
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+//dynamic
+.gallery-img {
+  position: relative;
+  font-size: $icon;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+.gallery-info {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  padding: 1rem 5%;
+  @include flex(space-between, center, row);
+
+  a {
+    display: inline-block;
+    padding: 1rem;
+    background: whitesmoke;
+    border-radius: 1rem;
+  }
+}
+
+// more footer
+.nav-button {
+  @include flex(center, center, row);
+  min-height: 10vh;
+  padding: 3rem;
+}
+
+@media screen and (max-width: 800px) {
+  html {
+    font-size: 45%;
+  }
+  header {
+    form {
+      input {
+        width: 60%;
+      }
+    }
+  }
+}
